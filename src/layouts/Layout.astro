@@ -1,25 +1,27 @@
 ---
-
 const {
-  title = 'CronoSENA — Sistema de Planificación Académica',
-  description = 'CronoSENA es un sistema inteligente para la gestión y planificación académica.',
-  image = '/og-cronosena.png',
-  canonical = 'https://cronosena.site/'
+  title = 'CronoSENA | Programación Académica y Horarios del SENA',
+  description = 'CronoSENA es un sistema para gestionar la programación académica y consultar horarios de instructores, fichas y ambientes en centros del SENA.',
+  image = 'https://cronosena.site/og-cronosena.png',
+  canonical = 'https://cronosena.site/',
+  includeFaq = false
 } = Astro.props;
 ---
+
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
   <head>
+    <!-- Core -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content="es_CO" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -33,69 +35,100 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
     {
-      "@type": "Organization",
-      "name": "Xenthrall",
-      "url": "https://github.com/xenthrall",
-      "sameAs": ["https://github.com/xenthrall"],
-      "logo": "https://cronosena.site/logo-192.png",
-      "image": "https://cronosena.site/og-cronosena.png"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "CronoSENA",
-      "url": "https://cronosena.site/",
-      "description": "Sistema inteligente de planificación y gestión académica para programas, competencias, instructores y fichas.",
-      "applicationCategory": "Education",
-      "operatingSystem": "Web",
-      "author": {
-        "@type": "Organization",
-        "name": "Xenthrall",
-        "url": "https://github.com/xenthrall"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "¿Qué es CronoSENA?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CronoSENA es un sistema de gestión y planificación académica desarrollado por un usuario de github Xenthrall para optimizar la programación de programas, competencias e instructores."
+          "@type": "WebSite",
+          "@id": "https://cronosena.site/#website",
+          "url": "https://cronosena.site/",
+          "name": "CronoSENA",
+          "description": "Sistema de programación académica y consulta de horarios del SENA",
+          "inLanguage": "es-CO",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://cronosena.site/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
           }
         },
         {
-          "@type": "Question",
-          "name": "¿Puedo instalar CronoSENA con Docker?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. El proyecto está pensado para ejecutarse en contenedores (Docker), con un docker-compose.yml en la raíz del repositorio."
+          "@type": "SoftwareApplication",
+          "@id": "https://cronosena.site/#software",
+          "name": "CronoSENA",
+          "url": "https://cronosena.site/",
+          "description": "Sistema para la gestión de programación académica, horarios de instructores, fichas y ambientes del SENA.",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "COP"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Xenthrall",
+            "url": "https://github.com/xenthrall"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://cronosena.site/#organization",
+          "name": "CronoSENA",
+          "url": "https://cronosena.site/",
+          "logo": "https://cronosena.site/logo-192.png",
+          "image": "https://cronosena.site/og-cronosena.png",
+          "founder": {
+            "@type": "Person",
+            "name": "Xenthrall",
+            "url": "https://github.com/xenthrall"
           }
         }
+        ${includeFaq ? `,
+        {
+          "@type": "FAQPage",
+          "@id": "https://cronosena.site/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es CronoSENA?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "CronoSENA es un sistema para la gestión y planificación académica que permite consultar horarios de instructores, fichas y ambientes en centros del SENA."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Puedo instalar CronoSENA con Docker?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí. CronoSENA puede desplegarse usando Docker y docker-compose, lo que facilita su instalación y mantenimiento."
+              }
+            }
+          ]
+        }` : ``}
       ]
     }
-  ]
-}
-</script>
+    </script>
   </head>
+
   <body>
     <slot />
   </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
