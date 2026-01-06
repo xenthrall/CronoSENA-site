@@ -4,15 +4,22 @@ import background from "../assets/background.svg";
 import logo from "../assets/logo.svg";
 import CentroSelector from "../components/CentroSelector.astro";
 ---
+
 <div id="container">
   <img id="background" src={background.src} alt="" fetchpriority="high" />
 
   <section id="links">
-    <a class="button" href="https://docs.cronosena.site">Lee nuestra documentación</a>
+    <a class="button" href="https://docs.cronosena.site"
+      >Lee nuestra documentación</a
+    >
     <a href="https://github.com/xenthrall/CronoSENA">
       GitHub
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m12.301 0h.093c2.242 0 4.34.613 6.137 1.68..." />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="m12.301 0h.093c2.242 0 4.34.613 6.137 1.68..."></path>
       </svg>
     </a>
   </section>
@@ -30,7 +37,7 @@ import CentroSelector from "../components/CentroSelector.astro";
     </section>
 
     <section id="hero">
-      <a href="https://cronosena.site">
+      <a id="cronosenaLogo-img" href="https://cronosena.site">
         <img
           src={cronosenaLogo.src}
           width="135"
@@ -101,6 +108,8 @@ import CentroSelector from "../components/CentroSelector.astro";
     gap: 1em;
     padding: 16px;
     width: 100%;
+    z-index: 30;
+
   }
 
   /* =========================
@@ -176,6 +185,7 @@ import CentroSelector from "../components/CentroSelector.astro";
     border-radius: 16px;
     border: 1px solid white;
     text-decoration: none;
+
   }
 
   /* =========================
@@ -183,7 +193,7 @@ import CentroSelector from "../components/CentroSelector.astro";
   ========================== */
   @media screen and (max-width: 800px) {
     /* Ocultar novedades */
-    #news {
+    #cronosenaLogo-img {
       display: none;
     }
 
@@ -213,7 +223,8 @@ import CentroSelector from "../components/CentroSelector.astro";
   }
 
   @media screen and (max-height: 400px) {
-    #news,
+    #cronosenaLogo-img,
+
     #intro-description {
       display: none;
     }
